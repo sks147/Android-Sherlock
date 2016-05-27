@@ -1,16 +1,16 @@
 package com.mind.awesome.sherlock;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,23 @@ public class MainActivity extends ActionBarActivity {
         brands.setText(brandsFormatted);
     }
 
+//    Call when Send Message button is clicked
+    public void onSendMessage(View view){
 
+        EditText messageView = (EditText) findViewById(R.id.message);
+        String messageText = messageView.getText().toString();
+//        Intent intent = new Intent(this, ReceiveMessageActivity.class);
+//        intent.putExtra("message", messageText);
 
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+//        intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messageText);
+        intent.putExtra(Intent.EXTRA_TEXT, messageText);
+
+        String chooserTitle = getString(R.string.chooser);
+        Intent chosenIntent = Intent.createChooser(intent, chooserTitle);
+        startActivity(chosenIntent);
+    }
 
 
     // automatically generated code from Android Studio
