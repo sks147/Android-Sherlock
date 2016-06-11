@@ -53,7 +53,10 @@ public class MainActivity extends ActionBarActivity {
         startActivity(chosenIntent);
     }
 
-
+    public void onGoToStopwatch(View view){
+        Intent intent = new Intent(this, StopwatchActivity.class);
+        startActivity(intent);
+    }
     // automatically generated code from Android Studio
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
